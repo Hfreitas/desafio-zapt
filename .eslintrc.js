@@ -1,0 +1,132 @@
+module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+    jest: true,
+    'jest/globals': true,
+  },
+  extends: [
+    'airbnb',
+    'airbnb/hooks',
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:jest/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:prettier/recommended',
+    'prettier',
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+    sourceType: 'module',
+    project: './tsconfig.eslint.json',
+    tsconfigRootDir: __dirname,
+  },
+  plugins: [
+    'react',
+    'jsx-a11y',
+    '@typescript-eslint',
+    'prettier',
+    'react-hooks',
+    'jest',
+    'import',
+  ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+  },
+  rules: {
+    'import/no-unresolved': 'error',
+    'no-param-reassign': ['error', { props: false }],
+    'no-undef': 'off',
+    camelcase: 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
+    'react/display-name': 'off',
+    'react/require-default-props': 'off',
+    'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.tsx'] }],
+    'react/jsx-no-undef': ['error', { allowGlobals: true }],
+    'prettier/prettier': 'error',
+    'no-use-before-define': 'off',
+    'react/no-children-prop': 'off',
+    'generator-star-spacing': ['error', { before: false, after: true }],
+    'import/no-duplicates': 'off',
+    'import/no-extraneous-dependencies': 'error',
+    'react-hooks/rules-of-hooks': 'error',
+    'space-before-function-paren': 'off',
+    'react-hooks/exhaustive-deps': 'warn',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
+    'import/extensions': 'off',
+    'no-unused-vars': 'off',
+    'import/prefer-default-export': 'off',
+    'jsx-a11y/href-no-hash': ['off'],
+    'max-len': [
+      'warn',
+      {
+        code: 80,
+        tabWidth: 2,
+        comments: 80,
+        ignoreComments: false,
+        ignoreTrailingComments: true,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+        ignoreRegExpLiterals: true,
+      },
+    ],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        argsIgnorePattern: '_',
+      },
+    ],
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        types: {
+          extendDefaults: true,
+          Foo: "Don't use Foo because it is unsafe",
+          String: {
+            message: 'Use string instead',
+            fixWith: 'string',
+          },
+
+          '{}': {
+            message: 'Use object instead',
+            fixWith: 'object',
+          },
+          object: false,
+        },
+      },
+    ],
+  },
+  settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: './tsconfig.eslint.json',
+      },
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        paths: ['./src'],
+      },
+    },
+    react: {
+      version: 'detect',
+    },
+  },
+};
